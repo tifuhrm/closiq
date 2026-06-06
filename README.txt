@@ -1,10 +1,18 @@
-Closiq Website V2
+Closiq Interactive Prototype
 
-Open index.html in a browser to view the website.
-
-Files:
+Upload all files to GitHub:
 - index.html
 - styles.css
+- script.js
 - closiq-logo.png
+- README.txt
 
-This version includes the Closiq logo and is designed as an AI Fashion Decision Engine landing page with app-style sections.
+This version includes:
+- clickable app sidebar
+- wardrobe dashboard
+- interactive closet filter
+- image upload preview
+- simulated AI clothing extraction
+- Buy / Don't Buy verdict simulator
+- AI chat demo
+- wishlist saving
