@@ -1,18 +1,23 @@
-Closiq Interactive Prototype
+Closiq Perfect V3
 
-Upload all files to GitHub:
+Upload/replace these files in your GitHub repository:
 - index.html
 - styles.css
 - script.js
-- closiq-logo.png
+- logo.png
+- screen-home.jpeg
+- screen-wardrobe.jpeg
+- screen-recommendations.jpeg
+- screen-chat.jpeg
+- screen-overview.jpeg
 - README.txt
 
-This version includes:
-- clickable app sidebar
-- wardrobe dashboard
-- interactive closet filter
+This version matches the existing PPT/app mockup style:
+- light blue mobile-first visual language
+- real uploaded app mockups
+- interactive feature tabs
+- interactive app prototype
+- wardrobe filter
 - image upload preview
-- simulated AI clothing extraction
-- Buy / Don't Buy verdict simulator
-- AI chat demo
-- wishlist saving
+- Buy / Don't Buy simulator
+- AI chatbot demo

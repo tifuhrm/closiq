@@ -3,284 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Closiq | Interactive AI Fashion Prototype</title>
+  <title>Closiq | Your wardrobe, but smarter.</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#home">
-      <img src="closiq-logo.png" alt="Closiq logo" />
+  <header class="nav">
+    <a href="#top" class="brand">
+      <img src="logo.png" alt="Closiq logo">
       <div>
         <strong>Closiq</strong>
         <span>Your wardrobe, but smarter.</span>
       </div>
     </a>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#app">Prototype</a>
+      <a href="#product">Product</a>
+      <a href="#verdict">AI Verdict</a>
+      <a href="#prototype">Prototype</a>
       <a href="#roadmap">Roadmap</a>
     </nav>
   </header>
 
-  <main>
-    <section id="home" class="hero">
+  <main id="top">
+    <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">AI Fashion Decision Engine</p>
+        <p class="eyebrow">AI Fashion Decision Platform</p>
         <h1>The AI shopping agent that knows your wardrobe.</h1>
-        <p>
-          Closiq helps users decide whether a new item truly fits their wardrobe, style,
-          and long-term fashion needs. Not just recommendation. Evaluation.
+        <p class="lead">
+          Closiq helps users make smarter fashion decisions based on what they already own.
+          It combines a digital wardrobe, personal styling, and an AI shopping advisor in one calm mobile-first experience.
         </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#app">Open interactive prototype</a>
-          <a class="btn secondary" href="#roadmap">See roadmap</a>
+        <div class="cta-row">
+          <a class="btn primary" href="#prototype">Try the prototype</a>
+          <a class="btn secondary" href="#verdict">See the verdict engine</a>
         </div>
       </div>
 
-      <div class="hero-verdict">
-        <p class="eyebrow">Live verdict example</p>
-        <h2>Don’t buy</h2>
-        <div class="hero-score">42%</div>
-        <p>Similar black jacket already exists. Low wardrobe utility. High duplication risk.</p>
+      <div class="hero-phone">
+        <img src="screen-home.jpeg" alt="Closiq app dashboard">
       </div>
     </section>
 
-    <section class="section intro">
-      <div>
-        <p class="eyebrow">The market gap</p>
-        <h2>Wardrobe apps know what you own. Shopping assistants know what to buy. Closiq connects both.</h2>
+    <section class="problem">
+      <div class="section-title">
+        <p class="eyebrow">The problem</p>
+        <h2>Most shopping apps are designed to make users buy more. Closiq helps users buy better.</h2>
       </div>
-      <div class="gap-card">
-        <div class="gap-axis x">New clothes</div>
-        <div class="gap-axis y">Existing clothes</div>
-        <div class="gap-box wardrobe">Digital wardrobe apps</div>
-        <div class="gap-box assistant">AI shopping assistants</div>
-        <div class="gap-box stylist">Human stylists</div>
-        <div class="gap-box closiq">Closiq</div>
+      <div class="problem-grid">
+        <article>
+          <span>01</span>
+          <h3>Nothing to wear</h3>
+          <p>Users own many clothes but struggle to build outfits and understand what their wardrobe is missing.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Decision fatigue</h3>
+          <p>Fashion shopping requires balancing style, price, occasion, weather, and existing wardrobe compatibility.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Overconsumption</h3>
+          <p>Traditional platforms recommend more products, even when the user may not actually need them.</p>
+        </article>
       </div>
     </section>
 
-    <section id="app" class="section prototype">
-      <div class="section-head">
-        <p class="eyebrow">Interactive prototype</p>
-        <h2>Try the app experience.</h2>
-        <p>This is a front-end demo. It simulates AI behavior for presentation purposes.</p>
+    <section id="product" class="product">
+      <div class="section-title">
+        <p class="eyebrow">Product experience</p>
+        <h2>A mobile-first fashion assistant that feels calm, personal, and intelligent.</h2>
       </div>
 
-      <div class="app-shell">
-        <aside class="sidebar">
-          <div class="mini-brand">
-            <img src="closiq-logo.png" alt="Closiq logo" />
-            <span>Closiq OS</span>
+      <div class="showcase">
+        <div class="screen-card active" data-screen="home">
+          <img src="screen-home.jpeg" alt="Home Dashboard">
+        </div>
+        <div class="screen-card" data-screen="wardrobe">
+          <img src="screen-wardrobe.jpeg" alt="Digital Wardrobe">
+        </div>
+        <div class="screen-card" data-screen="recommendations">
+          <img src="screen-recommendations.jpeg" alt="Recommendations">
+        </div>
+        <div class="screen-card" data-screen="chat">
+          <img src="screen-chat.jpeg" alt="AI Chatbot">
+        </div>
+
+        <div class="feature-tabs">
+          <button class="feature-tab active" data-target="home">
+            <strong>Home Dashboard</strong>
+            <span>Daily outfit, weather, schedule, and quick upload access.</span>
+          </button>
+          <button class="feature-tab" data-target="wardrobe">
+            <strong>Digital Wardrobe</strong>
+            <span>AI-organized clothing memory with categories and smart tags.</span>
+          </button>
+          <button class="feature-tab" data-target="recommendations">
+            <strong>AI Recommendations</strong>
+            <span>Personalized suggestions based on real wardrobe gaps.</span>
+          </button>
+          <button class="feature-tab" data-target="chat">
+            <strong>AI Fashion Chatbot</strong>
+            <span>A wardrobe-aware stylist that remembers user context.</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="verdict" class="verdict-section">
+      <div class="verdict-copy">
+        <p class="eyebrow">The core innovation</p>
+        <h2>Buy or Don’t Buy.</h2>
+        <p>
+          The AI Verdict Engine is the heart of Closiq. Instead of only saying “you might like this,”
+          the system evaluates whether a purchase truly improves the user’s wardrobe.
+        </p>
+        <ul>
+          <li>Duplication score</li>
+          <li>Wardrobe compatibility score</li>
+          <li>Gap-filling analysis</li>
+          <li>Cost-per-wear prediction</li>
+          <li>Style consistency check</li>
+        </ul>
+      </div>
+
+      <div class="verdict-phone">
+        <div class="phone-header">
+          <strong>AI Verdict</strong>
+          <span>Product analysis</span>
+        </div>
+        <div class="product-preview">
+          <div class="product-img"></div>
+          <div>
+            <h3>Black cropped jacket</h3>
+            <p>Streetwear · Outerwear · Fall</p>
           </div>
-          <button class="tab active" data-tab="dashboard">Dashboard</button>
-          <button class="tab" data-tab="closet">My Closet</button>
-          <button class="tab" data-tab="upload">Upload</button>
-          <button class="tab" data-tab="verdict">AI Verdict</button>
-          <button class="tab" data-tab="chat">AI Chat</button>
-          <button class="tab" data-tab="wishlist">Wishlist</button>
+        </div>
+        <div class="result dont">
+          <span>DON’T BUY</span>
+          <strong>42%</strong>
+        </div>
+        <div class="reason-list">
+          <div><b>High duplication risk</b><span>You already own similar black jackets.</span></div>
+          <div><b>Low wardrobe utility</b><span>Only adds two new outfit combinations.</span></div>
+          <div><b>Better alternative</b><span>Consider beige summer outerwear instead.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prototype" class="prototype-section">
+      <div class="section-title center">
+        <p class="eyebrow">Interactive prototype</p>
+        <h2>Try a simplified Closiq experience.</h2>
+        <p>This demo simulates the app logic for presentation purposes. It does not use real AI yet.</p>
+      </div>
+
+      <div class="app-demo">
+        <aside class="app-nav">
+          <img src="logo.png" alt="Closiq logo">
+          <button class="demo-tab active" data-panel="dash">Home</button>
+          <button class="demo-tab" data-panel="closet">Wardrobe</button>
+          <button class="demo-tab" data-panel="upload">Upload</button>
+          <button class="demo-tab" data-panel="judge">Verdict</button>
+          <button class="demo-tab" data-panel="chatbot">AI Chat</button>
         </aside>
 
-        <div class="app-content">
-          <section class="screen active" id="dashboard">
-            <div class="screen-title">
-              <div>
-                <p class="eyebrow">Dashboard</p>
-                <h3>Good morning, Timo.</h3>
-              </div>
-              <button class="small-btn" id="quickUpload">Upload item</button>
+        <div class="demo-content">
+          <section class="demo-panel active" id="dash">
+            <div class="mobile-top">
+              <h3>Shopping Assistant</h3>
+              <p>Manage Your Wardrobe</p>
             </div>
-
-            <div class="stats-grid">
-              <div class="stat-card">
-                <span>Closet items</span>
-                <strong id="itemCount">8</strong>
-              </div>
-              <div class="stat-card">
-                <span>Wardrobe gaps</span>
-                <strong>3</strong>
-              </div>
-              <div class="stat-card">
-                <span>Underused items</span>
-                <strong>12</strong>
-              </div>
-              <div class="stat-card">
-                <span>Average versatility</span>
-                <strong>78%</strong>
-              </div>
+            <div class="weather-row">
+              <div class="weather-card">☀️ <strong>24°C</strong><span>Partly cloudy</span></div>
+              <div class="weather-card">📅 <strong>Today</strong><span>10:30 class</span></div>
             </div>
-
-            <div class="two-col">
-              <div class="panel">
-                <h4>Today’s outfit suggestion</h4>
-                <div class="outfit-row">
-                  <div class="mini-item navy">Knit</div>
-                  <div class="mini-item black">Pants</div>
-                  <div class="mini-item blue">Sneakers</div>
-                </div>
-                <p>Recommended for Seoul weather and a casual university day.</p>
+            <div class="outfit-card">
+              <h4>Today's Outfit For You</h4>
+              <div class="outfit-visual">
+                <div class="cloth cream">Shirt</div>
+                <div class="cloth navy">Tee</div>
+                <div class="cloth denim">Denim</div>
               </div>
-
-              <div class="panel">
-                <h4>AI insight</h4>
-                <p>You wear neutral outerwear often, but your summer outerwear category is weak. A light jacket would add more outfit combinations than another black coat.</p>
-              </div>
+              <p><b>Clean & Minimal</b><br>Looks great for your schedule and the weather today.</p>
             </div>
           </section>
 
-          <section class="screen" id="closet">
-            <div class="screen-title">
-              <div>
-                <p class="eyebrow">My Closet</p>
-                <h3>Your digital wardrobe.</h3>
-              </div>
-              <select id="closetFilter">
-                <option value="all">All categories</option>
-                <option value="outerwear">Outerwear</option>
-                <option value="tops">Tops</option>
-                <option value="pants">Pants</option>
-                <option value="shoes">Shoes</option>
-              </select>
+          <section class="demo-panel" id="closet">
+            <div class="mobile-top">
+              <h3>My Wardrobe</h3>
+              <p><span id="closetCount">8</span> items</p>
+            </div>
+            <div class="chips">
+              <button class="chip active" data-filter="all">All</button>
+              <button class="chip" data-filter="top">Top</button>
+              <button class="chip" data-filter="bottom">Bottom</button>
+              <button class="chip" data-filter="outer">Outer</button>
+              <button class="chip" data-filter="shoes">Shoes</button>
             </div>
             <div class="closet-grid" id="closetGrid"></div>
           </section>
 
-          <section class="screen" id="upload">
-            <div class="screen-title">
+          <section class="demo-panel" id="upload">
+            <div class="mobile-top">
+              <h3>Upload Clothing</h3>
+              <p>Add photos of your clothing items</p>
+            </div>
+            <label class="upload-box">
+              <input type="file" id="fileInput" accept="image/*">
+              <span>＋</span>
+              <strong>Add Photo</strong>
+              <small>Tap to upload</small>
+            </label>
+            <div id="uploadResult" class="upload-result hidden">
+              <img id="uploadPreview" alt="Preview">
               <div>
-                <p class="eyebrow">Upload</p>
-                <h3>Build your wardrobe with images.</h3>
-              </div>
-            </div>
-
-            <div class="upload-zone" id="dropZone">
-              <input type="file" id="fileInput" accept="image/*" />
-              <div class="upload-icon">＋</div>
-              <h4>Upload clothing image</h4>
-              <p>Choose a photo, mirror selfie, shopping screenshot, or item image.</p>
-            </div>
-
-            <div class="upload-result hidden" id="uploadResult">
-              <div class="preview-box">
-                <img id="previewImage" alt="Uploaded preview" />
-              </div>
-              <div class="analysis-box">
-                <p class="eyebrow">AI extraction</p>
-                <h4 id="analysisTitle">Analyzing...</h4>
-                <div class="progress">
-                  <span id="progressBar"></span>
-                </div>
-                <ul id="analysisList"></ul>
-                <button class="small-btn" id="addToCloset" disabled>Add to closet</button>
+                <h4>AI detected: White blouse</h4>
+                <p>Category: Top<br>Style: Minimal<br>Season: Spring / Summer<br>Tag: Good for layering</p>
+                <button id="addItem" class="mini-btn">Add to wardrobe</button>
               </div>
             </div>
           </section>
 
-          <section class="screen" id="verdict">
-            <div class="screen-title">
-              <div>
-                <p class="eyebrow">AI Verdict</p>
-                <h3>Should you buy it?</h3>
-              </div>
+          <section class="demo-panel" id="judge">
+            <div class="mobile-top">
+              <h3>AI Verdict</h3>
+              <p>Should you buy it?</p>
             </div>
-
-            <div class="verdict-layout">
-              <div class="panel">
-                <label>Product name or link</label>
-                <input id="productInput" type="text" placeholder="Example: black leather jacket, white sneakers, summer linen shirt" />
-                <label>Occasion</label>
-                <select id="occasionInput">
-                  <option>Casual university day</option>
-                  <option>First date</option>
-                  <option>Business presentation</option>
-                  <option>Weekend trip</option>
-                  <option>Gym / workout</option>
-                </select>
-                <button class="btn primary full" id="analyzeBtn">Analyze item</button>
-              </div>
-
-              <div class="verdict-card" id="verdictCard">
-                <p class="eyebrow">Verdict result</p>
-                <h3 id="verdictText">Waiting for product</h3>
-                <div class="match-score" id="matchScore">--%</div>
-                <div class="score-bars">
-                  <div><span>Duplication risk</span><b id="dupScore">--</b></div>
-                  <div><span>Compatibility</span><b id="compScore">--</b></div>
-                  <div><span>Gap filling</span><b id="gapScore">--</b></div>
-                  <div><span>Cost-per-wear</span><b id="wearScore">--</b></div>
-                </div>
-                <p id="verdictReason">Paste a product or item idea to receive a simulated Buy or Don’t Buy analysis.</p>
-                <button class="small-btn hidden" id="saveWishlist">Save to wishlist</button>
-              </div>
+            <input id="productInput" class="product-input" placeholder="Try: black jacket, white sneakers, linen shirt">
+            <button id="analyzeBtn" class="analyze-btn">Analyze</button>
+            <div class="verdict-output">
+              <span id="verdictLabel">Waiting</span>
+              <strong id="verdictScore">--%</strong>
+              <p id="verdictReason">Enter a product to receive a wardrobe-based verdict.</p>
             </div>
           </section>
 
-          <section class="screen" id="chat">
-            <div class="screen-title">
-              <div>
-                <p class="eyebrow">AI Chat</p>
-                <h3>Your wardrobe-aware stylist.</h3>
-              </div>
+          <section class="demo-panel" id="chatbot">
+            <div class="mobile-top">
+              <h3>AI ChatBot</h3>
+              <p>Ask your wardrobe-aware assistant</p>
             </div>
-
             <div class="chat-window" id="chatWindow">
-              <div class="chat-message ai">Hi, I’m Closiq. Ask me what to wear, whether to buy an item, or what your wardrobe is missing.</div>
+              <div class="message ai">Hi, I’m your shopping assistant. How can I help you today?</div>
             </div>
-
             <div class="chat-input">
-              <input id="chatInput" type="text" placeholder="Ask: What should I wear for a first date?" />
+              <input id="chatInput" placeholder="Ask me anything...">
               <button id="sendChat">Send</button>
             </div>
-
-            <div class="quick-prompts">
-              <button data-prompt="What should I wear for a first date?">First date outfit</button>
-              <button data-prompt="Do I already own something similar to a black jacket?">Check duplication</button>
-              <button data-prompt="What is my biggest wardrobe gap?">Wardrobe gap</button>
-            </div>
-          </section>
-
-          <section class="screen" id="wishlist">
-            <div class="screen-title">
-              <div>
-                <p class="eyebrow">Wishlist</p>
-                <h3>Saved recommendations.</h3>
-              </div>
-            </div>
-            <div id="wishlistItems" class="wishlist-list">
-              <p class="muted">No saved items yet. Analyze a product and save it to wishlist.</p>
+            <div class="prompt-row">
+              <button data-prompt="What should I wear for a first date?">First date</button>
+              <button data-prompt="Do I already own something similar?">Similar item?</button>
+              <button data-prompt="What should I buy next?">Next purchase</button>
             </div>
           </section>
         </div>
       </div>
     </section>
 
-    <section id="roadmap" class="section roadmap">
-      <div class="section-head">
-        <p class="eyebrow">Roadmap</p>
-        <h2>From MVP to autonomous AI shopping agent.</h2>
+    <section id="roadmap" class="roadmap">
+      <div class="section-title">
+        <p class="eyebrow">Long-term vision</p>
+        <h2>From wardrobe assistant to agentic commerce.</h2>
       </div>
       <div class="roadmap-grid">
-        <article>
-          <span>0–6 months</span>
-          <h3>Launch MVP</h3>
-          <p>Wardrobe upload, AI tagging, basic recommendations, affiliate links.</p>
-        </article>
-        <article>
-          <span>6–18 months</span>
-          <h3>Improve personalization</h3>
-          <p>Buy or Don’t Buy engine, cost-per-wear, TPO recommendations, retailer APIs.</p>
-        </article>
-        <article>
-          <span>18+ months</span>
-          <h3>Agentic commerce</h3>
-          <p>Autonomous checkout, direct brand ecosystem, global expansion.</p>
-        </article>
+        <article><span>Short term</span><h3>MVP launch</h3><p>Wardrobe upload, dashboard, AI tags, recommendations, and affiliate links.</p></article>
+        <article><span>Mid term</span><h3>Smarter personalization</h3><p>Buy or Don’t Buy engine, cost-per-wear, retailer APIs, and TPO recommendations.</p></article>
+        <article><span>Long term</span><h3>Autonomous agent</h3><p>AI compares options, makes decisions, and eventually executes checkout.</p></article>
       </div>
+    </section>
+
+    <section class="final-cta">
+      <img src="logo.png" alt="Closiq logo">
+      <h2>Your wardrobe, but smarter.</h2>
+      <p>The AI shopping agent that turns impulsive consumption into intelligent decision-making.</p>
     </section>
   </main>
 
   <footer>
-    <p>Closiq · Interactive Prototype · BUSS215 MIS Final Project</p>
+    <p>Closiq · BUSS215 MIS Final Project · Interactive Website Prototype</p>
   </footer>
 
   <script src="script.js"></script>

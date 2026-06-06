@@ -1,252 +1,89 @@
-const tabs = document.querySelectorAll(".tab");
-const screens = document.querySelectorAll(".screen");
+const featureTabs=document.querySelectorAll(".feature-tab");
+const screenCards=document.querySelectorAll(".screen-card");
+featureTabs.forEach(tab=>tab.addEventListener("click",()=>{
+  featureTabs.forEach(t=>t.classList.remove("active"));
+  screenCards.forEach(c=>c.classList.remove("active"));
+  tab.classList.add("active");
+  document.querySelector(`.screen-card[data-screen="${tab.dataset.target}"]`).classList.add("active");
+}));
 
-const closetItems = [
-  { name: "Black bomber jacket", category: "outerwear", tag: "Duplicate risk", style: "dark" },
-  { name: "Navy knit", category: "tops", tag: "Highly versatile", style: "sky" },
-  { name: "Straight black pants", category: "pants", tag: "Most worn", style: "dark" },
-  { name: "White sneakers", category: "shoes", tag: "Good match", style: "cream" },
-  { name: "Blue shirt", category: "tops", tag: "Good for layering", style: "sky" },
-  { name: "Linen overshirt", category: "outerwear", tag: "Wardrobe gap", style: "mint" },
-  { name: "Wide denim", category: "pants", tag: "Casual", style: "gray" },
-  { name: "Leather shoes", category: "shoes", tag: "Formal", style: "cream" }
+const demoTabs=document.querySelectorAll(".demo-tab");
+const panels=document.querySelectorAll(".demo-panel");
+function openPanel(id){
+  demoTabs.forEach(t=>t.classList.toggle("active",t.dataset.panel===id));
+  panels.forEach(p=>p.classList.toggle("active",p.id===id));
+}
+demoTabs.forEach(t=>t.addEventListener("click",()=>openPanel(t.dataset.panel)));
+
+let closet=[
+  ["Black T-shirt","top","Frequently worn","navy"],
+  ["Coral knit","top","Highly versatile","cream"],
+  ["White blouse","top","Good for layering","cream"],
+  ["White hoodie","top","Casual","blue"],
+  ["Light denim","bottom","Most worn","blue"],
+  ["Beige cargo pants","bottom","Trend match","cream"],
+  ["Blue overshirt","outer","Wardrobe gap","blue"],
+  ["White sneakers","shoes","High compatibility","cream"]
 ];
-
-const wishlist = [];
-
-function switchTab(id) {
-  tabs.forEach(tab => tab.classList.toggle("active", tab.dataset.tab === id));
-  screens.forEach(screen => screen.classList.toggle("active", screen.id === id));
-  document.querySelector("#app").scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => switchTab(tab.dataset.tab));
-});
-
-document.getElementById("quickUpload").addEventListener("click", () => switchTab("upload"));
-
-function renderCloset(filter = "all") {
-  const grid = document.getElementById("closetGrid");
-  grid.innerHTML = "";
-
-  const items = filter === "all" ? closetItems : closetItems.filter(item => item.category === filter);
-
-  items.forEach(item => {
-    const card = document.createElement("div");
-    card.className = `closet-item ${item.style}`;
-    card.innerHTML = `<strong>${item.name}</strong><span>${item.category} · ${item.tag}</span>`;
-    grid.appendChild(card);
+const grid=document.getElementById("closetGrid");
+function renderCloset(filter="all"){
+  grid.innerHTML="";
+  closet.filter(i=>filter==="all"||i[1]===filter).forEach(i=>{
+    const d=document.createElement("div");
+    d.className=`closet-item ${i[3]}`;
+    d.innerHTML=`<strong>${i[0]}</strong><span>${i[1]} · ${i[2]}</span>`;
+    grid.appendChild(d);
   });
-
-  document.getElementById("itemCount").textContent = closetItems.length;
+  document.getElementById("closetCount").textContent=closet.length;
 }
-
 renderCloset();
+document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");renderCloset(c.dataset.filter);
+}));
 
-document.getElementById("closetFilter").addEventListener("change", e => renderCloset(e.target.value));
-
-const dropZone = document.getElementById("dropZone");
-const fileInput = document.getElementById("fileInput");
-const uploadResult = document.getElementById("uploadResult");
-const previewImage = document.getElementById("previewImage");
-const progressBar = document.getElementById("progressBar");
-const analysisTitle = document.getElementById("analysisTitle");
-const analysisList = document.getElementById("analysisList");
-const addToCloset = document.getElementById("addToCloset");
-
-dropZone.addEventListener("click", () => fileInput.click());
-
-fileInput.addEventListener("change", e => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    previewImage.src = reader.result;
-    uploadResult.classList.remove("hidden");
-    analysisTitle.textContent = "Analyzing image...";
-    analysisList.innerHTML = "";
-    addToCloset.disabled = true;
-    progressBar.style.width = "0%";
-
-    setTimeout(() => progressBar.style.width = "38%", 150);
-    setTimeout(() => progressBar.style.width = "72%", 650);
-    setTimeout(() => {
-      progressBar.style.width = "100%";
-      analysisTitle.textContent = "Detected item: Cream oversized shirt";
-      analysisList.innerHTML = `
-        <li>Category: Tops</li>
-        <li>Color: Cream</li>
-        <li>Style: Minimal casual</li>
-        <li>Season: Spring / Summer</li>
-        <li>AI tag: Good for layering</li>
-      `;
-      addToCloset.disabled = false;
-    }, 1200);
-  };
-  reader.readAsDataURL(file);
+const fileInput=document.getElementById("fileInput"),uploadResult=document.getElementById("uploadResult"),preview=document.getElementById("uploadPreview");
+fileInput.addEventListener("change",e=>{
+  const file=e.target.files[0]; if(!file)return;
+  const r=new FileReader();
+  r.onload=()=>{preview.src=r.result;uploadResult.classList.remove("hidden")};
+  r.readAsDataURL(file);
+});
+document.getElementById("addItem").addEventListener("click",()=>{
+  closet.push(["White blouse","top","Good for layering","cream"]);
+  renderCloset();openPanel("closet");
 });
 
-addToCloset.addEventListener("click", () => {
-  closetItems.push({ name: "Cream oversized shirt", category: "tops", tag: "Good for layering", style: "cream" });
-  renderCloset();
-  switchTab("closet");
+const analyzeBtn=document.getElementById("analyzeBtn");
+analyzeBtn.addEventListener("click",()=>{
+  const input=document.getElementById("productInput").value.toLowerCase();
+  const label=document.getElementById("verdictLabel"),score=document.getElementById("verdictScore"),reason=document.getElementById("verdictReason");
+  if(!input){label.textContent="Waiting";score.textContent="--%";reason.textContent="Enter a product to receive a wardrobe-based verdict.";return;}
+  if(input.includes("black")||input.includes("jacket")||input.includes("coat")){
+    label.textContent="DON'T BUY";score.textContent="42%";reason.textContent="You already own similar dark outerwear. Duplication risk is high and wardrobe improvement is low.";
+  }else if(input.includes("linen")||input.includes("summer")||input.includes("outer")){
+    label.textContent="BUY";score.textContent="91%";reason.textContent="This fills your summer outerwear gap and creates many new outfit combinations.";
+  }else if(input.includes("sneaker")||input.includes("white")){
+    label.textContent="BUY";score.textContent="87%";reason.textContent="Strong compatibility with your existing wardrobe and high cost-per-wear potential.";
+  }else{
+    label.textContent="MAYBE";score.textContent="68%";reason.textContent="The item fits some outfits, but Closiq recommends checking whether it fills a real wardrobe gap.";
+  }
 });
 
-const analyzeBtn = document.getElementById("analyzeBtn");
-const productInput = document.getElementById("productInput");
-const verdictText = document.getElementById("verdictText");
-const matchScore = document.getElementById("matchScore");
-const dupScore = document.getElementById("dupScore");
-const compScore = document.getElementById("compScore");
-const gapScore = document.getElementById("gapScore");
-const wearScore = document.getElementById("wearScore");
-const verdictReason = document.getElementById("verdictReason");
-const saveWishlist = document.getElementById("saveWishlist");
-
-let currentVerdict = null;
-
-function setScoreCircle(score) {
-  matchScore.style.background = `radial-gradient(circle at center, white 53%, transparent 54%), conic-gradient(${score >= 70 ? "var(--mint)" : score >= 50 ? "var(--blue)" : "var(--danger)"} ${score}%, #e8eef4 0)`;
+const chatWindow=document.getElementById("chatWindow"),chatInput=document.getElementById("chatInput");
+function addMsg(text,type){const m=document.createElement("div");m.className=`message ${type}`;m.textContent=text;chatWindow.appendChild(m);chatWindow.scrollTop=chatWindow.scrollHeight}
+function reply(q){
+  q=q.toLowerCase();
+  if(q.includes("date"))return "For a first date, I recommend the white blouse, light denim, and white sneakers. It is clean, soft, and fits your style history.";
+  if(q.includes("similar"))return "Yes. You already own several dark outerwear pieces, so another black jacket would have high duplication risk.";
+  if(q.includes("buy"))return "Your biggest wardrobe gap is versatile summer outerwear. A linen overshirt would add more value than another hoodie or black jacket.";
+  return "Based on your wardrobe, I recommend prioritizing versatile basics that fill gaps instead of items similar to what you already own.";
 }
-
-analyzeBtn.addEventListener("click", () => {
-  const input = productInput.value.trim().toLowerCase();
-  if (!input) {
-    verdictText.textContent = "Enter a product first";
-    verdictReason.textContent = "Paste a product link or describe an item to analyze it.";
-    return;
-  }
-
-  let score = 74;
-  let verdict = "Buy";
-  let reason = "This item adds useful outfit combinations and fills a clear wardrobe gap.";
-  let dup = "Low";
-  let comp = "Good";
-  let gap = "High";
-  let wear = "Strong";
-
-  if (input.includes("black") || input.includes("jacket") || input.includes("coat")) {
-    score = 42;
-    verdict = "Don’t buy";
-    reason = "You already own similar outerwear. Compatibility is limited and duplication risk is high.";
-    dup = "High";
-    comp = "Low";
-    gap = "Low";
-    wear = "Weak";
-  } else if (input.includes("sneaker") || input.includes("white")) {
-    score = 87;
-    verdict = "Buy";
-    reason = "This item works with many existing outfits and has strong cost-per-wear potential.";
-    dup = "Medium";
-    comp = "High";
-    gap = "Medium";
-    wear = "Strong";
-  } else if (input.includes("linen") || input.includes("summer")) {
-    score = 91;
-    verdict = "Buy";
-    reason = "This fills the summer outerwear gap and increases wardrobe versatility.";
-    dup = "Low";
-    comp = "High";
-    gap = "High";
-    wear = "Strong";
-  }
-
-  verdictText.textContent = verdict;
-  matchScore.textContent = `${score}%`;
-  setScoreCircle(score);
-  dupScore.textContent = dup;
-  compScore.textContent = comp;
-  gapScore.textContent = gap;
-  wearScore.textContent = wear;
-  verdictReason.textContent = reason;
-  saveWishlist.classList.remove("hidden");
-
-  currentVerdict = { product: productInput.value.trim(), verdict, score, reason };
-});
-
-saveWishlist.addEventListener("click", () => {
-  if (!currentVerdict) return;
-  wishlist.push(currentVerdict);
-  renderWishlist();
-  switchTab("wishlist");
-});
-
-function renderWishlist() {
-  const container = document.getElementById("wishlistItems");
-  if (wishlist.length === 0) {
-    container.innerHTML = '<p class="muted">No saved items yet. Analyze a product and save it to wishlist.</p>';
-    return;
-  }
-
-  container.innerHTML = "";
-  wishlist.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "wishlist-card";
-    card.innerHTML = `
-      <div>
-        <strong>${item.product}</strong>
-        <p>${item.reason}</p>
-      </div>
-      <span>${item.verdict} · ${item.score}%</span>
-    `;
-    container.appendChild(card);
-  });
+function sendChat(){
+  const text=chatInput.value.trim(); if(!text)return;
+  addMsg(text,"user"); chatInput.value="";
+  setTimeout(()=>addMsg(reply(text),"ai"),400);
 }
-
-const chatWindow = document.getElementById("chatWindow");
-const chatInput = document.getElementById("chatInput");
-const sendChat = document.getElementById("sendChat");
-
-function addMessage(text, type) {
-  const msg = document.createElement("div");
-  msg.className = `chat-message ${type}`;
-  msg.textContent = text;
-  chatWindow.appendChild(msg);
-  chatWindow.scrollTop = chatWindow.scrollHeight;
-}
-
-function generateReply(text) {
-  const q = text.toLowerCase();
-
-  if (q.includes("date")) {
-    return "For a first date, I recommend your navy knit, straight black pants, and white sneakers. It feels clean, relaxed, and intentional without looking too formal.";
-  }
-
-  if (q.includes("black") || q.includes("similar")) {
-    return "You already own a black bomber jacket and another dark outerwear piece, so I would avoid buying another black jacket unless the fit is very different.";
-  }
-
-  if (q.includes("gap")) {
-    return "Your biggest wardrobe gap is light summer outerwear. A linen overshirt would create more combinations than another dark jacket.";
-  }
-
-  if (q.includes("trend") || q.includes("korea")) {
-    return "For Korea, minimal casual styling, clean sneakers, relaxed denim, and light layering pieces are strong choices. I would focus on versatile basics instead of statement pieces.";
-  }
-
-  return "Based on your wardrobe, I would prioritize versatile items that fill gaps rather than items similar to what you already own.";
-}
-
-function handleChat() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-
-  addMessage(text, "user");
-  chatInput.value = "";
-
-  setTimeout(() => addMessage(generateReply(text), "ai"), 450);
-}
-
-sendChat.addEventListener("click", handleChat);
-chatInput.addEventListener("keydown", e => {
-  if (e.key === "Enter") handleChat();
-});
-
-document.querySelectorAll(".quick-prompts button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    chatInput.value = btn.dataset.prompt;
-    handleChat();
-  });
-});
+document.getElementById("sendChat").addEventListener("click",sendChat);
+chatInput.addEventListener("keydown",e=>{if(e.key==="Enter")sendChat()});
+document.querySelectorAll(".prompt-row button").forEach(b=>b.addEventListener("click",()=>{chatInput.value=b.dataset.prompt;sendChat()}));
