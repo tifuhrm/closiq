@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>Closiq App Prototype</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main class="phone">
+<section class="screen active" id="home-screen">
+<header class="app-header">
+  <div class="text-logo"><h1>Shopping Assistant</h1><p>Manage Your Wardrobe</p></div>
+</header>
+<div class="content">
+  <section class="greeting"><h2>Good morning, Sarah 👋</h2><p>Let’s dress smart today.</p></section>
+  <section class="info-row">
+    <div class="info-card weather-card"><div class="weather-icon">🌤️</div><div><strong>24°C</strong><span>Partly cloudy</span><small>📍 Seoul, Kor</small></div></div>
+    <div class="info-card schedule-card"><div class="calendar-icon">▢</div><div><b>Today’s Schedule</b><span>10:30 class</span><span>16:00 Group meeting</span><small>+ 1 more</small></div></div>
+  </section>
+  <section class="outfit-card">
+    <div class="card-title"><h2>Today’s Outfit For You</h2><button>Best Match</button></div>
+    <div class="outfit-body">
+      <div class="outfit-img"><img src="assets/outfit-clean-minimal.jpg" alt="Clean minimal outfit"></div>
+      <div class="outfit-text"><h3>Clean & Minimal</h3><p>Looks great for your schedule and the weather today.</p><button class="blue-btn" id="detailsBtn">View Details</button></div>
+    </div>
+    <div class="dots"><span class="active"></span><span></span><span></span><span></span></div>
+  </section>
+  <section class="upload-card">
+    <h2>Upload Clothing</h2><p>Add photos of your clothing items</p>
+    <label class="upload-box"><input type="file" id="uploadInput" accept="image/*"><span>＋</span><b>Add Photo</b><small>Tap to upload</small></label>
+    <div class="upload-preview hidden" id="uploadPreviewBox"><img id="uploadPreview" alt="Uploaded clothing"><div><b>AI detected: White Blouse</b><small>Top · Minimal · Spring/Summer</small></div></div>
+  </section>
+</div>
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-target="home-screen"><span>⌂</span><small>Home</small></button>
+  <button class="nav-btn" id="wardrobeOpen"><span>▣</span><small>Wardrobe</small></button>
+  <button class="nav-btn center" id="chatOpen"><span>▣</span></button>
+  <button class="nav-btn" data-target="recommend-screen"><span>▱</span><small>Bookmark</small></button>
+  <button class="nav-btn" data-target="profile-screen"><span>○</span><small>Profile</small></button>
+</nav>
+<div class="dim hidden" id="wardrobeDim"></div>
+<div class="wardrobe-modal hidden" id="wardrobeModal">
+  <div class="modal-top"><h2>My Wardrobe</h2><button>17 items</button></div>
+  <div class="chips">
+    <button class="chip active" data-filter="all">Top</button><button class="chip" data-filter="bottom">Bottom</button><button class="chip" data-filter="outer">Outer</button><button class="chip" data-filter="shoes">Shoes</button><button class="chip" data-filter="accessories">Accessories</button>
+  </div>
+  <div class="wardrobe-grid" id="wardrobeGrid"></div>
+  <button class="down-btn" id="wardrobeClose">⌄</button>
+</div>
+<div class="chat-modal hidden" id="chatModal">
+  <div class="chat-head"><span class="bot-icon">🤖</span><h2>AI ChatBot</h2></div>
+  <div class="chat-window" id="chatWindow"><div class="message ai">Hi! I’m your shopping assistant. How can I help you today?</div></div>
+  <div class="chat-input"><input id="chatInput" placeholder="Ask me anything..."><button id="sendChat">Send</button></div>
+</div>
+</section>
+
+<section class="screen" id="recommend-screen">
+<header class="recommend-header"><h1>Recommendations</h1></header>
+<div class="recommend-content">
+  <section class="add-more"><img src="assets/black-tshirt.jpg" alt="Black T-shirt"><div class="plus">＋</div><p>Add more items</p></section>
+  <div class="refresh">Refresh ↻</div>
+  <div class="recommend-grid">
+    <article><img src="assets/blue-shirt.jpg"><button>»</button></article><article><img src="assets/white-shirt.jpg"></article><article><img src="assets/cargo-pants.jpg"></article><article><img src="assets/blue-jeans.jpg"><button>»</button></article><article><img src="assets/white-skirt.jpg"></article><article><img src="assets/denim-shorts.jpg"><button>»</button></article>
+  </div>
+</div>
+<nav class="bottom-nav">
+  <button class="nav-btn" data-target="home-screen"><span>⌂</span><small>Home</small></button>
+  <button class="nav-btn" id="wardrobeOpen2"><span>▣</span><small>Wardrobe</small></button>
+  <button class="nav-btn center" id="chatOpen2"><span>▣</span></button>
+  <button class="nav-btn active" data-target="recommend-screen"><span>▱</span><small>Bookmark</small></button>
+  <button class="nav-btn" data-target="profile-screen"><span>○</span><small>Profile</small></button>
+</nav>
+</section>
+
+<section class="screen" id="profile-screen">
+<header class="app-header"><div class="text-logo"><h1>Profile</h1><p>Your fashion intelligence</p></div></header>
+<div class="content"><section class="profile-card"><div class="avatar">S</div><h2>Sarah</h2><p>Minimal casual · Neutral tones · 17 wardrobe items</p></section><section class="profile-card"><h2>Wardrobe Intelligence</h2><p>Your wardrobe heavily favors dark tones. Closiq recommends adding versatile summer outerwear next.</p></section></div>
+<nav class="bottom-nav">
+  <button class="nav-btn" data-target="home-screen"><span>⌂</span><small>Home</small></button>
+  <button class="nav-btn" id="wardrobeOpen3"><span>▣</span><small>Wardrobe</small></button>
+  <button class="nav-btn center" id="chatOpen3"><span>▣</span></button>
+  <button class="nav-btn" data-target="recommend-screen"><span>▱</span><small>Bookmark</small></button>
+  <button class="nav-btn active" data-target="profile-screen"><span>○</span><small>Profile</small></button>
+</nav>
+</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
