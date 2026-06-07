@@ -47,3 +47,103 @@
   font-size:30px;
   cursor:pointer;
 }
+
+/* Clickable wardrobe item analysis */
+.clickable-item{
+  cursor:pointer;
+  transition:transform .15s ease, opacity .15s ease;
+}
+.clickable-item:active{
+  transform:scale(.97);
+  opacity:.85;
+}
+.item-details-modal{
+  position:absolute;
+  left:14px;
+  right:14px;
+  top:150px;
+  background:white;
+  border-radius:28px;
+  padding:20px;
+  z-index:8;
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+.item-detail-top{
+  display:grid;
+  grid-template-columns:118px 1fr;
+  gap:14px;
+  align-items:center;
+}
+.item-detail-top img{
+  width:118px;
+  height:118px;
+  object-fit:cover;
+  border-radius:18px;
+  background:#eef8fd;
+}
+.item-detail-top h2{
+  font-size:25px;
+  margin:0 0 6px;
+  font-weight:900;
+}
+.item-detail-top p{
+  margin:0 0 10px;
+  color:#777;
+  font-size:14px;
+}
+.compatibility-score{
+  display:inline-block;
+  background:var(--blue2);
+  color:#0a76a8;
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:900;
+}
+.item-ai-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:18px 0;
+}
+.item-ai-tags span,
+#pairingList span{
+  display:inline-block;
+  background:#d8f6ff;
+  color:#0a76a8;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:13px;
+}
+.item-insight,
+.pairings{
+  background:#f5fcff;
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:12px;
+}
+.item-insight h3,
+.pairings h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+.item-insight p{
+  margin:0;
+  color:#555;
+}
+#pairingList{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.recommend-btn{
+  width:100%;
+  border:0;
+  background:var(--blue);
+  color:#0b668e;
+  border-radius:18px;
+  padding:14px;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+}
